@@ -1,0 +1,2 @@
+[console_scripts]
+mlm = mlm.cmds:main

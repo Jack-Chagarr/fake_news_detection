@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: mlm
+Version: 0.1
+Summary: Masked Language Model Scoring
+Author: Julian Salazar
+Provides-Extra: dev
+License-File: LICENSE
+License-File: NOTICE
