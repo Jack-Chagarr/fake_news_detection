@@ -16,7 +16,7 @@ So we tried to combine this approach to our based models.
 
 # 2. Methodology
 
-'Pseudo perplexity' is getting perplexity score of Masked Language Models. Since those models are trained by predicting masked tokens in the sentence, 'pseudo perplexity' is computed by summing all the log probabilities obtained by sequentially masking each token in the input sentence. In prior research and our task, we combined evidence and claim in our dataset to use it as input sentence. Since this idea is given by _"Masked Language Model Scoring"_, we modified their source code to calculate our models' 'pseudo perplexity'.
+'Pseudo perplexity' is getting perplexity score of Masked Language Models. Since those models are trained by predicting masked tokens in the sentence, 'pseudo perplexity' is computed by summing all the log probabilities obtained by sequentially masking each token in the input sentence. In prior research and our task, we combined evidence and claim in our dataset to use it as input sentence. Since this idea is given by _"Masked Language Model Scoring"_, we modified their source code to calculate our models' 'pseudo perplexity'. In the source code, they call it as 'mlm score'.
 
 Although, this source code is written with 'gluonnlp', 'transformers' packages, we tried to put some other models, which are not in those packages, to source code and calculate 'pseudo perplexity', but we failed. So we could only calculate 'pseudo perplexity' of ERNIE model which is in 'transformers' package.
 
