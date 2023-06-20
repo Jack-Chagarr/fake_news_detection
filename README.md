@@ -7,18 +7,18 @@
 
 # 1. Introduction
 
-We found the prior research, "Evaluation of Fake News Detection with Knowledge-Enhanced Language Models" which tried to detect fake news by knowledge-enhanced language models, such as ERNIE, KnowBert, KEPLER, K-ADAPTER.
+We found the prior research, _"Evaluation of Fake News Detection with Knowledge-Enhanced Language Models"_ which tried to detect fake news by knowledge-enhanced language models, such as ERNIE, KnowBert, KEPLER, K-ADAPTER.
 
 Their results showed that they got better detection accuracy than Pretrained language models, and we tried to improve the detection accuracy by using knowledge-enhanced language models as base models, with different approach other than just fine tuning.
 
-We found another prior research in related field 'fact-checking', "Towards Few-Shot Fact-Checking via Perplexity". They used 'pseudo-perplexity' which is similar to perplexity, but more fit to PLMs, to classify between real and fake claims. They did few shot learning(2, 10, 50 shot settings), and got better accuracy than finetuned PLMs.
+We found another prior research in related field 'fact-checking', _"Towards Few-Shot Fact-Checking via Perplexity"_. They used 'pseudo-perplexity' which is similar to perplexity, but more fit to PLMs, to classify between real and fake claims. They did few shot learning(2, 10, 50 shot settings), and got better accuracy than finetuned PLMs.
 So we tried to combine this approach to our based models.
 
 # 2. Methodology
 
-'Pseudo perplexity' is getting perplexity score of Masked Language Models. Since those models are trained by predicting masked tokens in the sentence, 'pseudo perplexity' is computed by summing all the log probabilities obtained by sequentially masking each token in the input sentence. In prior research and our task, we combined evidence and claim in our dataset to use it as input sentence. Since this idea is given by "Masked Language Model Scoring", we modified their source code to calculate our models' 'pseudo perplexity'.
+'Pseudo perplexity' is getting perplexity score of Masked Language Models. Since those models are trained by predicting masked tokens in the sentence, 'pseudo perplexity' is computed by summing all the log probabilities obtained by sequentially masking each token in the input sentence. In prior research and our task, we combined evidence and claim in our dataset to use it as input sentence. Since this idea is given by _"Masked Language Model Scoring"_, we modified their source code to calculate our models' 'pseudo perplexity'.
 
-Alothough, this source code is written with 'gluonnlp', 'transformers' packages, we tried to put some other models, which are not in those packages, to source code and calculate 'pseudo perplexity', but we failed. So we could only calculate 'pseudo perplexity' of ERNIE model.
+Although, this source code is written with 'gluonnlp', 'transformers' packages, we tried to put some other models, which are not in those packages, to source code and calculate 'pseudo perplexity', but we failed. So we could only calculate 'pseudo perplexity' of ERNIE model which is in 'transformers' package.
 
 # 3. Dataset
 
@@ -76,7 +76,7 @@ PPL_GPT2: 67.48% (from "Towards Few-Shot Fact-Checking via Perplexity")<br>
 
 # 6. Conclusion
 
-PPL_ERNIE got better accuracy than Fine-tuned ERNIE. However, PPL_BERT, and PPL_GPT2 got better accuracy than PPL_ERNIE, it seems that ERNIE's knowledge encoding did not give positive impact to our task. Also, all the result got lower than 0.5 accuracy, which is lower than random probability 0.5, this approach seems not that valid.
+PPL_ERNIE got better accuracy than Fine-tuned ERNIE. However, PPL_BERT, and PPL_GPT2 got better accuracy than PPL_ERNIE, it seems that ERNIE's knowledge encoding did not give positive impact to our task. Also, all the result got lower than 50% accuracy, which is lower than random probability 50%, this approach seems not that valid for now.
 
 # 7. Reference
 
